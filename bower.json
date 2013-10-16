@@ -1,0 +1,17 @@
+{
+	"name": "form-client-lib",
+	"version": "0.0.0",
+	"description": "Render forms from descriptors",
+	"author": "Linagora - OpenPaaS",
+	"license": "AFFERO",
+	"ignore": [
+	],
+	"dependencies": {
+	},
+	"devDependencies": {
+	},
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/linagora-open-paas/form-client-lib.git"
+	}
+}
