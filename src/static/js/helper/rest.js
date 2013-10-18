@@ -1,14 +1,14 @@
 define([
-	"jquery",
+	"jquery","helper/serverConf"
 ], function(
-  $
+  $,serverConf
 ){
   return {
 
 		searchInstance: function(id, searchSuccess) {
 			$.ajax({
 				type: "GET",
-				url: "/instances/"+id,
+				url: serverConf.getServerRootUrl()+"/instances/"+id,
 				dataType: "json",
 				success: function (data)
 				{
@@ -20,7 +20,7 @@ define([
 		searchForm: function(id, searchSuccess) {
 			$.ajax({
 				type: "GET",
-				url: "/forms/"+id,
+				url: serverConf.getServerRootUrl()+"/forms/"+id,
 				dataType: "json",
 				success: function (data)
 				{
@@ -30,7 +30,16 @@ define([
 		},
 
 		createResult: function(resultModel, creationCallback) {
-			//TODO
+			$.ajax({
+				type: "POST",
+				url: serverConf.getServerRootUrl()+"/results",
+				dataType: "json",
+				data: instance,
+				success: function (data)
+				{
+					creationCallback(data);
+				}
+			});
 		}
 
 	};
