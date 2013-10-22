@@ -29,12 +29,17 @@ define([
 			});
 		},
 
-		createResult: function(resultModel, creationCallback) {
+		createResult: function(resultModel, instanceId,creationCallback) {
+			var result = {
+				'instance' : instanceId,
+				'model' : resultModel
+			};
+
 			$.ajax({
 				type: "POST",
 				url: serverConf.getServerRootUrl()+"/results",
 				dataType: "json",
-				data: instance,
+				data: result,
 				success: function (data)
 				{
 					creationCallback(data);
