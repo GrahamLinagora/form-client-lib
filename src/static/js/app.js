@@ -2,11 +2,13 @@ define([
 	"collections/snippets"
   ,"views/my-form"
 	,"helper/rest"
+	,"helper/idHelper"
 	,"views/submitDiv"
 ], function(
 	SnippetsCollection
 	,MyFormView
 	,restHelper
+	,idHelper
 	,SubmitButtonDiv
 ){
   return {
@@ -16,7 +18,7 @@ define([
 
 		getInstance: function() {
 			var that = this;
-			restHelper.searchInstance(this.getInstanceId(), function(instance) {
+			restHelper.searchInstance(idHelper.getInstanceId(), function(instance) {
 				that.getFormById(instance.form)
 			});
 		},
@@ -44,19 +46,7 @@ define([
 			formView.loadForm(form.model);
 			$('#nameH2').text(form.name);
 			$('#descH4').text(form.description);
-		},
-
-		getInstanceId: function() {
-			//get instance id from the url
-			//TODO improve this : it is not a very clean way to do this : maybe use a generated json file 
-			var pathArray = window.location.pathname.split('/');
-			if(pathArray[pathArray.length-1] === '' ) {
-				//check if the url ends with a '/'
-				return pathArray[pathArray.length-2];
-			}
-			else {
-				return pathArray[pathArray.length-1];
-			}
 		}
+
   }
 });
