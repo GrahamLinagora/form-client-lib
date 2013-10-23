@@ -15,7 +15,8 @@ define([
 			var resultModel = this.buildResultModel();
 
 			restHelper.createResult(resultModel, idHelper.getInstanceId(), function() {
-				//TODO leave the page ?
+				//TODO change this : this message is only here for a demo
+				window.alert("Your input has been stored properly.");
 			});
 		},
 
